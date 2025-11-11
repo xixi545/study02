@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>光棍节惊喜</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .image-container {
+            margin: 20px 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .prank-image {
+            width: 100%;
+            max-width: 400px;
+            display: block;
+            margin: 0 auto;
+            transition: transform 0.3s;
+            border-radius: 10px;
+        }
+        
+        .prank-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .message {
+            font-size: 1.5rem;
+            margin: 25px 0;
+            line-height: 1.6;
+            font-weight: bold;
+            color: #ff4081;
+            animation: bounce 2s infinite;
+        }
+        
+        .counter {
+            font-size: 1.1rem;
+            margin: 20px 0;
+            color: #666;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="image-container">
+                <img src="p1.jpg" alt="光棍节恶作剧图片" class="prank-image">
+            </div>
+            
+            <div class="message">
+                <p>想什么呢？</p>
+                <p>祝你光棍节快乐！🤣</p>
+            </div>
+            
+            <div class="counter">
+                页面访问次数: <span id="visitCount">0</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 页面访问计数器
+        let visitCount = localStorage.getItem('visitCount') || 0;
+        visitCount++;
+        localStorage.setItem('visitCount', visitCount);
+        document.getElementById('visitCount').textContent = visitCount;
+        
+        // 图片点击效果
+        document.querySelector('.prank-image').addEventListener('click', function() {
+            this.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 300);
+        });
+        
+        // 添加一些动画效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const message = document.querySelector('.message');
+            setTimeout(() => {
+                message.style.opacity = 1;
+            }, 500);
+        });
+    </script>
+</body>
+</html>
